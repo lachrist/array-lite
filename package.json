@@ -1,0 +1,20 @@
+{
+  "name": "array-lite",
+  "description": "Tiny array utility which only use one builtin: parseInt.",
+  "version": "0.0.0",
+  "author": {
+    "name": "Laurent Christophe",
+    "email": "lachrist@vub.ac.be"
+  },
+  "repository": "lachrist/array-lite",
+  "homepage": "http://github.com/lachrist/array-lite",
+  "license": "MIT",
+  "files": [
+    "main.js"
+  ],
+  "main": "main.js",
+  "keywords": [
+    "Array",
+    "Utilitiy",
+  ]
+}
