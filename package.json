@@ -1,6 +1,6 @@
 {
   "name": "array-lite",
-  "description": "Tiny array utility which only use one builtin: parseInt.",
+  "description": "Tiny array utility which only uses one builtin: parseInt",
   "version": "0.0.0",
   "author": {
     "name": "Laurent Christophe",
@@ -15,6 +15,6 @@
   "main": "main.js",
   "keywords": [
     "Array",
-    "Utilitiy",
+    "Utilitiy"
   ]
 }
