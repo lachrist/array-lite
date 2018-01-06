@@ -38,9 +38,9 @@ assert(ArrayLite.all([1,2,3], function (x) { return x<4 }), true);
 
 assert(ArrayLite.all([1,2,3], function (x) { return x<3 }), false);
 
-assert(ArrayLite.elem([1,2,3], 2), true);
+assert(ArrayLite.contain([1,2,3], 2), true);
 
-assert(ArrayLite.elem([1,2,3], 4), false);
+assert(ArrayLite.contain([1,2,3], 4), false);
 
 assert(ArrayLite.map([1,2,3], function (x) { return 2*x }), [2,4,6]);
 

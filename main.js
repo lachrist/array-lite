@@ -53,7 +53,7 @@ exports.all = function (array, predicate) {
   return true;
 };
 
-exports.elem = function (array, element) {
+exports.contain = function (array, element) {
   var index = 0;
   var length = array.length;
   while (index<length) {
