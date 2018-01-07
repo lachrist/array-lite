@@ -59,3 +59,7 @@ assert(ArrayLite.last([1,2,3,4]), 4);
 assert(ArrayLite.slice([1,2,3], null, null), [1,2,3]);
 
 assert(ArrayLite.slice([1,2,3,4,5,6], 1, 4), [2,3,4]);
+
+assert(ArrayLite.prefix([1,2,3], [1,2,3,4,5,6]), true);
+
+assert(ArrayLite.prefix([1,3,2], [1,2,3,4,5,6]), false);

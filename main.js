@@ -16,6 +16,17 @@ exports.flaten = function (array1) {
   return result;
 };
 
+exports.prefix = function (array1, array2) {
+  var index1 = 0;
+  var length1 = array1.length;
+  while (index1 < length1) {
+    if (array1[index1] !== array2[index1++]) {
+      return false;
+    }
+  }
+  return true;
+}
+
 exports.concat = function () {
   var result=[];
   var index1 = 0;
@@ -80,8 +91,7 @@ exports.zipmap = function (array, transformers) {
   var length = array.length;
   while (index < length) {
     var transform = transformers[index];
-    result[index] = transform ? transform(array[index], index, array) : array[index];
-    index++;
+    result[index] = transform ? transform(array[index], index++, array) : array[index++];
   }
   return result;
 };
@@ -92,9 +102,10 @@ exports.filter = function (array, predicate) {
   var length = array.length;
   while (index < length) {
     if (predicate(array[index], index, array)) {
-      result[result.length] = array[index];
+      result[result.length] = array[index++];
+    } else {
+      index++;
     }
-    index++;
   }
   return result;
 };
