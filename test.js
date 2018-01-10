@@ -26,6 +26,8 @@ function assert (x, y) {
   }
 }
 
+assert(ArrayLite.join([1,2,3], ","), "1,2,3")
+
 assert(ArrayLite.flaten([[1,2,3], [4,5,6]]), [1,2,3,4,5,6]);
 
 assert(ArrayLite.concat([1,2,3], [4,5,6]), [1,2,3,4,5,6]);
