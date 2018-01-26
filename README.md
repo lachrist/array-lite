@@ -2,7 +2,7 @@
 
 Tiny array utility module which does not access the global object.
 This module was developped to produce code resilient to modification of the global object.
-Instead of using this module, one can perform `Reflect.apply` on `Array.prototype`'s methods but it significanlty [slower](https://jsperf.com/array-prototype-foreach-vs-user-made-foreach).
+Instead of using this module, one can perform `Reflect.apply` on `Array.prototype`'s methods but it is [significanlty slower](https://jsperf.com/array-prototype-foreach-vs-user-made-foreach).
 
 Functions inspired from `Array.prototype`'s method:
 * `concat`
