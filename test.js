@@ -32,36 +32,42 @@ assert(ArrayLite.flaten([[1,2,3], [4,5,6]]), [1,2,3,4,5,6]);
 
 assert(ArrayLite.concat([1,2,3], [4,5,6]), [1,2,3,4,5,6]);
 
-assert(ArrayLite.any([1,2,3], function (x) { return x===2 }), true);
+assert(ArrayLite.some([1,2,3], function (x) { return x===2 }), true);
 
-assert(ArrayLite.any([1,2,3], function (x) { return x===4 }), false);
+assert(ArrayLite.some([1,2,3], function (x) { return x===4 }), false);
 
-assert(ArrayLite.all([1,2,3], function (x) { return x<4 }), true);
+assert(ArrayLite.every([1,2,3], function (x) { return x<4 }), true);
 
-assert(ArrayLite.all([1,2,3], function (x) { return x<3 }), false);
+assert(ArrayLite.every([1,2,3], function (x) { return x<3 }), false);
 
-assert(ArrayLite.contain([1,2,3], 2), true);
+assert(ArrayLite.includes([1,2,3], 2), true);
 
-assert(ArrayLite.contain([1,2,3], 4), false);
+assert(ArrayLite.includes([1,2,3], 4), false);
 
 assert(ArrayLite.map([1,2,3], function (x) { return 2*x }), [2,4,6]);
 
-assert(ArrayLite.zipmap([1,2,3], [null, function (x) { return 2*x }]), [1,4,3]);
+assert(ArrayLite.zipMap([1,2,3], [null, function (x) { return 2*x }]), [1,4,3]);
+
+assert(ArrayLite.flatenMap([1,2,3], function (x) { return [x,x] }), [1,1,2,2,3,3])
 
 assert(ArrayLite.filter([1,2,3,4,5,6], function (x) { return x % 2 === 0 }), [2,4,6]);
 
+assert(ArrayLite.reverse([1,2,3]), [3,2,1]);
+
 var sum = 0;
-ArrayLite.each([1,2,3,4], function (x) { sum += x });
+ArrayLite.forEach([1,2,3,4], function (x) { sum += x });
 assert(sum, 10);
 
-assert(ArrayLite.reduce([1,2,3,4], function (r, x) { return r + x}, 0), 10);
+assert(ArrayLite.find([1,2,3], function (x) { return x % 2 === 0 }), 2);
 
-assert(ArrayLite.last([1,2,3,4]), 4);
+assert(ArrayLite.findIndex([1,2,3], function (x) { return x % 2 === 0 }), 1);
+
+assert(ArrayLite.reduce([1,2,3,4], function (r, x) { return r + x}, 0), 10);
 
 assert(ArrayLite.slice([1,2,3], null, null), [1,2,3]);
 
 assert(ArrayLite.slice([1,2,3,4,5,6], 1, 4), [2,3,4]);
 
-assert(ArrayLite.prefix([1,2,3], [1,2,3,4,5,6]), true);
+assert(ArrayLite.indexOf([1,2,3,2], 2), 1);
 
-assert(ArrayLite.prefix([1,3,2], [1,2,3,4,5,6]), false);
+assert(ArrayLite.lastIndexOf([2,1,2,3], 2), 2);
