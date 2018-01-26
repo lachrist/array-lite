@@ -1,6 +1,6 @@
 # ArrayLite
 
-Tiny array utility module which does not access the global object.
+Tiny array utility which does not access the global object.
 This module was developped to produce code resilient to modification of the global object.
 Instead of using this module, one can perform `Reflect.apply` on `Array.prototype`'s methods but it is [significanlty slower](https://jsperf.com/array-prototype-foreach-vs-user-made-foreach).
 
