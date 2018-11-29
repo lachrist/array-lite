@@ -2,26 +2,29 @@
 
 Tiny array utility which does not access the global object.
 This module was developped to produce code resilient to modification of the global object.
-Instead of using this module, one can perform `Reflect.apply` on `Array.prototype`'s methods but it is [significanlty slower](https://jsperf.com/array-prototype-foreach-vs-user-made-foreach).
+It provides a significantly faster alternative to performing `Reflect.apply` on `Array.prototype`'s methods.
 
-Functions inspired from `Array.prototype`'s method:
-* `concat`
+Below are the functions provided by this module.
+They are inspired from `Array.prototype`'s method of the same name.
+The main difference is that the array is passed as the first argument rather than the `this` argument.
+Also, it is not possible to specify the `this` argument passed to callback functions (e.g.: `forEach`, `map`, `filter`, etc).
+Additional differences are put in parenthesis.
+
+* `concat` (all arguments should be array-like objects)
 * `every`
 * `filter`
 * `find`
 * `findIndex`
+* `flat` (each element of the array should be an array-like object, does not accept a `depth` argument)
+* `flatMap` (each element of the value returned by the `callback` should be an array-like object)
 * `forEach`
 * `includes`
 * `indexOf`
-* `join`
-* `lastIndexOf`
+* `join` (`separator` argument is mandatory)
+* `lastIndexOf` (does not accept a `fromIndex` argument)
 * `map`
-* `reduce`
-* `reverse`
+* `reduce` (`initialValue` argument is mandatory)
+* `reduceRight` (`initialValue` argument is mandatory)
+* `reverse` (`begin` and `end` argument are both mandatory)
 * `slice`
 * `some`
-
-Additional functions:
-* `flaten`: `ArrayLite.flaten([xs1,xs2,xs2])` is equivalent to `ArrayLite.concat(xs1,xs2,xs3)`.
-* `flatenMap`: `ArrayLite.flatenMap(xs, f)` is equivalent to `ArrayLite.flaten(ArrayLite.map(xs, f))`.
-* `zipMap`: `ArrayLite.zipMap([x1,x2,x3],[f,f,f])` is equivalent to `ArrayLite.map([x1, x2, x3], f)`.

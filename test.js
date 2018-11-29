@@ -28,7 +28,7 @@ function assert (x, y) {
 
 assert(ArrayLite.join([1,2,3], ","), "1,2,3")
 
-assert(ArrayLite.flaten([[1,2,3], [4,5,6]]), [1,2,3,4,5,6]);
+assert(ArrayLite.flat([[1,2,3], [4,5,6]]), [1,2,3,4,5,6]);
 
 assert(ArrayLite.concat([1,2,3], [4,5,6]), [1,2,3,4,5,6]);
 
@@ -46,9 +46,7 @@ assert(ArrayLite.includes([1,2,3], 4), false);
 
 assert(ArrayLite.map([1,2,3], function (x) { return 2*x }), [2,4,6]);
 
-assert(ArrayLite.zipMap([1,2,3], [null, function (x) { return 2*x }]), [1,4,3]);
-
-assert(ArrayLite.flatenMap([1,2,3], function (x) { return [x,x] }), [1,1,2,2,3,3])
+assert(ArrayLite.flatMap([1,2,3], function (x) { return [x,x] }), [1,1,2,2,3,3])
 
 assert(ArrayLite.filter([1,2,3,4,5,6], function (x) { return x % 2 === 0 }), [2,4,6]);
 
@@ -62,9 +60,9 @@ assert(ArrayLite.find([1,2,3], function (x) { return x % 2 === 0 }), 2);
 
 assert(ArrayLite.findIndex([1,2,3], function (x) { return x % 2 === 0 }), 1);
 
-assert(ArrayLite.reduce([1,2,3,4], function (r, x) { return r + x}, 0), 10);
+assert(ArrayLite.reduce(["1","2","3"], function (r, x) { return r + x}, "0"), "0123");
 
-assert(ArrayLite.slice([1,2,3], null, null), [1,2,3]);
+assert(ArrayLite.reduceRight(["1","2","3"], function (r, x) { return r + x}, "4"), "4321");
 
 assert(ArrayLite.slice([1,2,3,4,5,6], 1, 4), [2,3,4]);
 
