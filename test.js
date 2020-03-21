@@ -73,12 +73,4 @@ assert(ArrayLite.indexOf([1,2,3,2], 2), 1);
 
 assert(ArrayLite.lastIndexOf([2,1,2,3], 2), 2);
 
-assert(ArrayLite.orMap([1,2,3], (x) => x > 3), false);
-
-assert(ArrayLite.orMap([1,2,3,4], (x) => x > 3), true);
-
-assert(ArrayLite.andMap([1,2,3], (x) => x <= 3), true);
-
-assert(ArrayLite.andMap([1,2,3,4], (x) => x <= 3), false);
-
 console.log(counter + " assertions passed");

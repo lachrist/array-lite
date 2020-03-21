@@ -202,25 +202,3 @@ exports.slice = function (array, index, length) {
   }
   return result;
 };
-
-exports.orMap = function (array, transform) {
-  var length = array.length;
-  var index = 0;
-  while (index < length) {
-    if (transform(array[index++])) {
-      return true;
-    }
-  }
-  return false;
-};
-
-exports.andMap = function (array, transform) {
-  var length = array.length;
-  var index = 0;
-  while (index < length) {
-    if (!transform(array[index++])) {
-      return false;
-    }
-  }
-  return true;
-};
