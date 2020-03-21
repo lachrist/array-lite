@@ -109,7 +109,7 @@ exports.flatMap = function (array1, transform) {
     }
   }
   return result;
-}
+};
 
 exports.filter = function (array, predicate) {
   var result = [];
@@ -201,4 +201,26 @@ exports.slice = function (array, index, length) {
     result[result.length] = array[index++];
   }
   return result;
+};
+
+exports.orMap = function (array, transform) {
+  var length = array.length;
+  var index = 0;
+  while (index < length) {
+    if (transform(array[index++])) {
+      return true;
+    }
+  }
+  return false;
+};
+
+exports.andMap = function (array, transform) {
+  var length = array.length;
+  var index = 0;
+  while (index < length) {
+    if (!transform(array[index++])) {
+      return false;
+    }
+  }
+  return true;
 };
