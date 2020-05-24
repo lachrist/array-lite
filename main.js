@@ -202,3 +202,50 @@ exports.slice = function (array, index, length) {
   }
   return result;
 };
+
+//////////////////
+// Set-Inspired //
+//////////////////
+
+exports.has = exports.includes;
+
+exports.add = function (array1, element) {
+  var index = 0;
+  var length = array1.length;
+  while (index < length) {
+    if (array1[index] === element) {
+      return array1;
+    }
+    index++;
+  }
+  index = 0;
+  var array2 = [];
+  while (index < length) {
+    array2[index] = array1[index];
+    index++;
+  }
+  array2[length] = element;
+  return array2;
+};
+
+exports.delete = function (array1, element) {
+  var index1 = 0;
+  var length = array1.length;
+  while (index1 < length) {
+    if (array1[index1] === element) {
+      var array2 = [];
+      var index2 = 0;
+      while (index2 < index1) {
+        array2[index2] = array1[index2];
+        index2++;
+      }
+      while (index2 < length - 1) {
+        array2[index2] = array1[index2 + 1];
+        index2++;
+      }
+      return array2;
+    }
+    index1++;
+  }
+  return array1;
+};

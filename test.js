@@ -1,76 +1,58 @@
 
-var ArrayLite = require("./main.js");
-var isArray = Array.isArray;
-var stringify = JSON.stringify;
+// nyc --reporter=html --include main.js node test.js ; open coverage/index.html
+// nyc --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --include main.js node test.js
 
-function equal (x, y) {
-  if (!isArray(x) || !isArray(x)) {
-    return x === y;
-  }
-  if (x.length !== y.length) {
-    return false;
-  }
-  var index = 0;
-  var length = x.length;
-  while (index < length) {
-    if (x[index] !== y[index++]) {
-      return false;
-    }
-  }
-  return true;
-}
+const ArrayLite = require("./main.js");
+const Assert = require("assert").strict;
 
-var counter = 0;
+Assert.deepEqual(ArrayLite.join([1,2,3], ","), "1,2,3")
+Assert.deepEqual(ArrayLite.join([], ","), "");
 
-function assert (x, y) {
-  if (!equal(x, y)) {
-    throw new Error("Assertion failure: "+stringify(x)+" is not equal to "+stringify(y))
-  }
-  counter++;
-}
+Assert.deepEqual(ArrayLite.flat([[1,2,3], [4,5,6]]), [1,2,3,4,5,6]);
 
-assert(ArrayLite.join([1,2,3], ","), "1,2,3")
+Assert.deepEqual(ArrayLite.concat([1,2,3], [4,5,6]), [1,2,3,4,5,6]);
 
-assert(ArrayLite.flat([[1,2,3], [4,5,6]]), [1,2,3,4,5,6]);
+Assert.deepEqual(ArrayLite.some([1,2,3], (x) => x === 2), true);
+Assert.deepEqual(ArrayLite.some([1,2,3], (x) => x === 4), false);
 
-assert(ArrayLite.concat([1,2,3], [4,5,6]), [1,2,3,4,5,6]);
+Assert.deepEqual(ArrayLite.every([1,2,3], (x) => x < 4), true);
+Assert.deepEqual(ArrayLite.every([1,2,3], (x) => x < 3), false);
 
-assert(ArrayLite.some([1,2,3], function (x) { return x===2 }), true);
+Assert.deepEqual(ArrayLite.includes([1,2,3], 2), true);
+Assert.deepEqual(ArrayLite.includes([1,2,3], 4), false);
 
-assert(ArrayLite.some([1,2,3], function (x) { return x===4 }), false);
+Assert.deepEqual(ArrayLite.map([1,2,3], (x) => 2 * x), [2,4,6]);
 
-assert(ArrayLite.every([1,2,3], function (x) { return x<4 }), true);
+Assert.deepEqual(ArrayLite.flatMap([1,2,3], (x) => [x,x]), [1,1,2,2,3,3])
 
-assert(ArrayLite.every([1,2,3], function (x) { return x<3 }), false);
+Assert.deepEqual(ArrayLite.filter([1,2,3,4,5,6], (x) => x % 2 === 0), [2,4,6]);
 
-assert(ArrayLite.includes([1,2,3], 2), true);
+Assert.deepEqual(ArrayLite.reverse([1,2,3]), [3,2,1]);
 
-assert(ArrayLite.includes([1,2,3], 4), false);
+let sum = 0;
+ArrayLite.forEach([1,2,3,4], (x) => sum += x);
+Assert.deepEqual(sum, 10);
 
-assert(ArrayLite.map([1,2,3], function (x) { return 2*x }), [2,4,6]);
+Assert.deepEqual(ArrayLite.find([1,2,3], (x) => x % 2 === 0), 2);
 
-assert(ArrayLite.flatMap([1,2,3], function (x) { return [x,x] }), [1,1,2,2,3,3])
+Assert.deepEqual(ArrayLite.findIndex([1,2,3], (x) => x % 2 === 0), 1);
+Assert.deepEqual(ArrayLite.findIndex([1,3,5], (x) => x % 2 === 0), -1);
 
-assert(ArrayLite.filter([1,2,3,4,5,6], function (x) { return x % 2 === 0 }), [2,4,6]);
+Assert.deepEqual(ArrayLite.reduce(["1","2","3"], (r, x) => r + x, "0"), "0123");
 
-assert(ArrayLite.reverse([1,2,3]), [3,2,1]);
+Assert.deepEqual(ArrayLite.reduceRight(["1","2","3"], (r, x) => r + x, "4"), "4321");
 
-var sum = 0;
-ArrayLite.forEach([1,2,3,4], function (x) { sum += x });
-assert(sum, 10);
+Assert.deepEqual(ArrayLite.slice([1,2,3,4,5,6], 1, 4), [2,3,4]);
 
-assert(ArrayLite.find([1,2,3], function (x) { return x % 2 === 0 }), 2);
+Assert.deepEqual(ArrayLite.indexOf([1,2,3,2], 2), 1);
+Assert.deepEqual(ArrayLite.indexOf([1,2,3,2], 5), -1);
 
-assert(ArrayLite.findIndex([1,2,3], function (x) { return x % 2 === 0 }), 1);
+Assert.deepEqual(ArrayLite.lastIndexOf([2,1,2,3], 2), 2);
+Assert.deepEqual(ArrayLite.lastIndexOf([2,1,2,3], 5), -1);
 
-assert(ArrayLite.reduce(["1","2","3"], function (r, x) { return r + x}, "0"), "0123");
+Assert.deepEqual(ArrayLite.add([1,2,3], 2), [1,2,3]);
+Assert.deepEqual(ArrayLite.add([1,2,3], 4), [1,2,3,4]);
 
-assert(ArrayLite.reduceRight(["1","2","3"], function (r, x) { return r + x}, "4"), "4321");
+Assert.deepEqual(ArrayLite.delete([1,2,3], 2), [1,3]);
+Assert.deepEqual(ArrayLite.delete([1,2,3], 4), [1,2,3]);
 
-assert(ArrayLite.slice([1,2,3,4,5,6], 1, 4), [2,3,4]);
-
-assert(ArrayLite.indexOf([1,2,3,2], 2), 1);
-
-assert(ArrayLite.lastIndexOf([2,1,2,3], 2), 2);
-
-console.log(counter + " assertions passed");
