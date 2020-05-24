@@ -55,4 +55,3 @@ Assert.deepEqual(ArrayLite.add([1,2,3], 4), [1,2,3,4]);
 
 Assert.deepEqual(ArrayLite.delete([1,2,3], 2), [1,3]);
 Assert.deepEqual(ArrayLite.delete([1,2,3], 4), [1,2,3]);
-

@@ -1,193 +1,170 @@
 
-exports.join = function (array, separator) {
-  if (array.length === 0)
+exports.join = (array, separator) => {
+  if (array.length === 0) {
     return "";
-  var last = array.length-1;
-  var index = 0;
-  var result = "";
-  while (index < last) {
-    result += array[index++] + separator;
   }
-  return result + array[last];
+  const last_index = array.length - 1;
+  let result = "";
+  for (let index = 0; index < last_index; index++) {
+    result += array[index] + separator;
+  }
+  return result + array[last_index];
 };
 
-exports.flat = function (array1) {
-  var result = [];
-  var length = 0
-  var index1 = 0;
-  var length1 = array1.length;
-  while (index1 < length1) {
-    var array2 = array1[index1++];
-    var index2 = 0;
-    var length2 = array2.length;
-    while (index2 < length2) {
-      result[length++] = array2[index2++];
+exports.flat = (array1) => {
+  const result = [];
+  let length = 0;
+  const length1 = array1.length;
+  for (let index1 = 0; index1 < length1; index1++) {
+    const array2 = array1[index1];
+    const length2 = array2.length;
+    for (let index2 = 0; index2 < length2; index2++) {
+      result[length++] = array2[index2];
     }
   }
   return result;
 };
 
-exports.concat = function () {
-  var result = [];
-  var index1 = 0;
-  var length1 = arguments.length;
-  while (index1 < length1) {
-    var array2 = arguments[index1++];
-    var index2 = 0;
-    var length2 = array2.length;
-    while (index2 < length2) {
-      result[result.length] = array2[index2++];
+exports.concat = (...array1) => {
+  const result = [];
+  let length = 0;
+  const length1 = array1.length;
+  for (let index1 = 0; index1 < length1; index1++) {
+    const array2 = array1[index1];
+    const length2 = array2.length;
+    for (let index2 = 0; index2 < length2; index2++) {
+      result[length++] = array2[index2];
     }
   }
   return result;
 };
 
-exports.some = function (array, predicate) {
-  var index = 0;
-  var length = array.length;
-  while (index < length) {
-    if (predicate(array[index], index++, array)) {
+exports.some = (array, predicate) => {
+  const length = array.length;
+  for (let index = 0; index < length; index++) {
+    if (predicate(array[index], index, array)) {
       return true
     }
   }
   return false;
 };
 
-exports.every = function (array, predicate) {
-  var index = 0;
-  var length = array.length;
-  while (index < length) {
-    if (!predicate(array[index], index++, array)) {
+exports.every = (array, predicate) => {
+  const length = array.length;
+  for (let index = 0; index < length; index++) {
+    if (!predicate(array[index], index, array)) {
       return false;
     }
   }
   return true;
 };
 
-exports.includes = function (array, element) {
-  var index = 0;
-  var length = array.length;
-  while (index<length) {
-    if (array[index++] === element) {
+exports.includes = (array, element) => {
+  const length = array.length;
+  for (let index = 0; index < length; index++) {
+    if (array[index] === element) {
       return true
     }
   }
   return false;
 };
 
-exports.reverse = function (array) {
-  var index = array.length-1;
-  var result = [];
-  var length = 0;
-  while (index >= 0) {
-    result[length++] = array[index--];
+exports.reverse = (array) => {
+  const result = [];
+  let length = 0;
+  for (let index = array.length - 1; index >= 0; index--) {
+    result[length++] = array[index];
   }
   return result;
 };
 
-exports.map = function (array, transform) {
-  var result = [];
-  var index = 0;
-  var length = array.length;
-  while (index < length) {
-    result[index] = transform(array[index], index++, array);
+exports.map = (array, transform) => {
+  const result = [];
+  const length = array.length;
+  for (let index = 0; index < length; index++) {
+    result[index] = transform(array[index], index, array);
   }
   return result;
 };
 
-exports.flatMap = function (array1, transform) {
-  var result = [];
-  var length = 0;
-  var index1 = 0;
-  var length1 = array1.length;
-  while (index1 < length1) {
-    var array2 = transform(array1[index1], index1++, array1);
-    var index2 = 0;
-    var length2 = array2.length;
-    while (index2 < length2) {
-      result[length++] = array2[index2++];
+exports.flatMap = (array1, transform) => {
+  const result = [];
+  let length = 0;
+  const length1 = array1.length;
+  for (let index1 = 0; index1 < length1; index1++) {
+    const array2 = transform(array1[index1], index1, array1);
+    const length2 = array2.length;
+    for (let index2 = 0; index2 < length2; index2++) {
+      result[length++] = array2[index2];
     }
   }
   return result;
 };
 
-exports.filter = function (array, predicate) {
-  var result = [];
-  var index = 0;
-  var length = array.length;
-  while (index < length) {
+exports.filter = (array, predicate) => {
+  const result = [];
+  const length = array.length;
+  for (let index = 0; index < length; index++) {
     if (predicate(array[index], index, array)) {
-      result[result.length] = array[index++];
-    } else {
-      index++;
+      result[result.length] = array[index];
     }
   }
   return result;
 };
 
-exports.forEach = function (array, procedure) {
-  var index = 0;
-  var length = array.length;
-  while (index < length) {
-    procedure(array[index], index++, array);
+exports.forEach = (array, procedure) => {
+  const length = array.length;
+  for (let index = 0; index < length; index++) {
+    procedure(array[index], index, array);
   }
 };
 
-exports.reduce = function (array, accumulator, result) {
-  var index = 0;
-  var length = array.length;
-  while (index < length) {
-    result = accumulator(result, array[index], index++, array);
-  }
-  return result;
-};
-
-exports.reduceRight = function (array, accumulator, result) {
-  var index = array.length;
-  while (index--) {
+exports.reduce = (array, accumulator, result) => {
+  const length = array.length;
+  for (let index = 0; index < length; index++) {
     result = accumulator(result, array[index], index, array);
   }
   return result;
 };
 
-exports.indexOf = function (array, value) {
-  var index = 0;
-  var length = array.length;
-  while (index < length) {
+exports.reduceRight = (array, accumulator, result) => {
+  for (let index = array.length - 1; index >= 0; index--) {
+    result = accumulator(result, array[index], index, array);
+  }
+  return result;
+};
+
+exports.indexOf = (array, value) => {
+  const length = array.length;
+  for (let index = 0; index < length; index++) {
     if (array[index] === value) {
       return index;
     }
-    index++;
   }
   return -1;
 };
 
-exports.find = function (array, predicate) {
-  var index = 0;
-  var length = array.length;
-  while (index < length) {
+exports.find = (array, predicate) => {
+  const length = array.length;
+  for (let index = 0; index < length; index++) {
     if (predicate(array[index], index, array)) {
       return array[index];
     }
-    index++;
   }
 };
 
-exports.findIndex = function (array, predicate) {
-  var index = 0;
-  var length = array.length;
-  while (index < length) {
+exports.findIndex = (array, predicate) => {
+  const length = array.length;
+  for (let index = 0; index < length; index++) {
     if (predicate(array[index], index, array)) {
       return index;
     }
-    index++
   }
   return -1;
 }
 
-exports.lastIndexOf = function (array, value) {
-  var index = array.length;
-  while (index--) {
+exports.lastIndexOf = (array, value) => {
+  for (let index = array.length - 1; index >= 0; index--) {
     if (array[index] === value) {
       return index;
     }
@@ -195,10 +172,11 @@ exports.lastIndexOf = function (array, value) {
   return -1;
 };
 
-exports.slice = function (array, index, length) {
-  var result = [];
-  while (index < length) {
-    result[result.length] = array[index++];
+exports.slice = (array, index, length1) => {
+  const result = [];
+  let length2 = 0;
+  for (; index < length1; index++) {
+    result[length2++] = array[index];
   }
   return result;
 };
@@ -209,43 +187,35 @@ exports.slice = function (array, index, length) {
 
 exports.has = exports.includes;
 
-exports.add = function (array1, element) {
-  var index = 0;
-  var length = array1.length;
-  while (index < length) {
+exports.add = (array1, element) => {
+  const length = array1.length;
+  for (let index = 0; index < length; index++) {
     if (array1[index] === element) {
       return array1;
     }
-    index++;
   }
-  index = 0;
-  var array2 = [];
-  while (index < length) {
+  const array2 = [];
+  for (let index = 0; index < length; index++) {
     array2[index] = array1[index];
-    index++;
   }
   array2[length] = element;
   return array2;
 };
 
-exports.delete = function (array1, element) {
-  var index1 = 0;
-  var length = array1.length;
-  while (index1 < length) {
+exports.delete = (array1, element) => {
+  const length = array1.length;
+  for (let index1 = 0; index1 < length; index1++) {
     if (array1[index1] === element) {
-      var array2 = [];
-      var index2 = 0;
-      while (index2 < index1) {
+      const array2 = [];
+      let index2 = 0;
+      for (; index2 < index1; index2++) {
         array2[index2] = array1[index2];
-        index2++;
       }
-      while (index2 < length - 1) {
+      for (; index2 < length - 1; index2++) {
         array2[index2] = array1[index2 + 1];
-        index2++;
       }
       return array2;
     }
-    index1++;
   }
   return array1;
 };
