@@ -2,7 +2,7 @@
 
 Tiny array utility inspired from the builtin `Array` and `Set` methods which does not access the global object.
 This module was developped to produce code resilient to modification of the global object.
-It provides a [significantly faster](https://jsperf.com/reflect-array-vs-explicit-loop/1/edit) alternative to performing `Reflect.apply` on `Array.prototype`'s methods.
+It provides a [significantly faster](https://jsperf.com/reflect-array-vs-explicit-loop/) alternative to performing `Reflect.apply` on `Array.prototype`'s methods.
 
 * `Array.prototpe`
   * `concat`
