@@ -119,6 +119,23 @@ exports.forEach = (array, procedure) => {
   }
 };
 
+exports.mapReduce = (array1, accumulator, finalizer) => {
+  const length1 = array1.length;
+  if (length1 === 0) {
+    return finalizer([]);
+  }
+  let length2 = 0;
+  const array2 = [];
+  const next = (element2) => {
+    array2[length2++] = element2;
+    if (length2 === length1) {
+      return finalizer(array2);
+    }
+    return accumulator(next, array1[length2], length2, array1);
+  }
+  return accumulator(next, array1[0], 0, array1);
+};
+
 exports.reduce = (array, accumulator, result) => {
   const length = array.length;
   for (let index = 0; index < length; index++) {
