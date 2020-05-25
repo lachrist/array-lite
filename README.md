@@ -30,7 +30,7 @@ It provides a [significantly faster](https://jsperf.com/reflect-array-vs-explici
 * Specific to `array-lite`:
   * `mapReduce`
 
-These functions are not intended to work exactly as their builtin counter-part.
+These functions are not intended to work exactly as their builtin counterpart.
 Main differences are:
 * The array is passed as the first argument rather than the `this` argument.
 * Arguments are assumed to be present and of the correct type (i.e.: no type checking nor casting).
