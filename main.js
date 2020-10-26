@@ -170,7 +170,7 @@ exports.find = (array, predicate) => {
   }
 };
 
-exports.findIndex = (array, predicate) => {
+exports.findIndexOf = (array, predicate) => {
   const length = array.length;
   for (let index = 0; index < length; index++) {
     if (predicate(array[index], index, array)) {
@@ -179,6 +179,15 @@ exports.findIndex = (array, predicate) => {
   }
   return -1;
 }
+
+exports.findLastIndexOf = (array, predicate) => {
+  for (let index = array.length - 1; index >= 0; index--) {
+    if (predicate(array[index], index, array)) {
+      return index;
+    }
+  }
+  return -1;
+};
 
 exports.lastIndexOf = (array, value) => {
   for (let index = array.length - 1; index >= 0; index--) {

@@ -1,7 +1,7 @@
 {
   "name": "array-lite",
   "description": "Tiny array utility which emphases functional-style and does not access the global object",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": {
     "name": "Laurent Christophe",
     "email": "lachrist@vub.ac.be"
