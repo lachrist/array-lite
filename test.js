@@ -35,11 +35,11 @@ Assert.deepEqual(sum, 10);
 
 Assert.deepEqual(ArrayLite.find([1,2,3], (x, i, xs) => (Assert.deepEqual(xs[i], x), x % 2 === 0)), 2);
 
-Assert.deepEqual(ArrayLite.findIndexOf([1,2,3,4], (x, i, xs) => (Assert.deepEqual(xs[i], x), x % 2 === 0)), 1);
-Assert.deepEqual(ArrayLite.findIndexOf([1,3,5], (x, i, xs) => (Assert.deepEqual(xs[i], x), x % 2 === 0)), -1);
+Assert.deepEqual(ArrayLite.findIndex([1,2,3,4], (x, i, xs) => (Assert.deepEqual(xs[i], x), x % 2 === 0)), 1);
+Assert.deepEqual(ArrayLite.findIndex([1,3,5], (x, i, xs) => (Assert.deepEqual(xs[i], x), x % 2 === 0)), -1);
 
-Assert.deepEqual(ArrayLite.findLastIndexOf([1,2,3,4], (x, i, xs) => (Assert.deepEqual(xs[i], x), x % 2 === 0)), 3);
-Assert.deepEqual(ArrayLite.findLastIndexOf([1,3,5], (x, i, xs) => (Assert.deepEqual(xs[i], x), x % 2 === 0)), -1);
+Assert.deepEqual(ArrayLite.findLastIndex([1,2,3,4], (x, i, xs) => (Assert.deepEqual(xs[i], x), x % 2 === 0)), 3);
+Assert.deepEqual(ArrayLite.findLastIndex([1,3,5], (x, i, xs) => (Assert.deepEqual(xs[i], x), x % 2 === 0)), -1);
 
 Assert.deepEqual(ArrayLite.reduce(["1","2","3"], (r, x, i, xs) => (Assert.deepEqual(xs[i], x), r + x), "0"), "0123");
 
