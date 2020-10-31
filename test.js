@@ -27,6 +27,8 @@ Assert.deepEqual(ArrayLite.flatMap([1,2,3], (x, i, xs) => (Assert.deepEqual(xs[i
 
 Assert.deepEqual(ArrayLite.filter([1,2,3,4,5,6], (x, i, xs) => (Assert.deepEqual(xs[i], x), x % 2 === 0)), [2,4,6]);
 
+Assert.deepEqual(ArrayLite.filterOut([1,2,3,4,5,6], (x, i, xs) => (Assert.deepEqual(xs[i], x), x % 2 === 0)), [1,3,5]);
+
 Assert.deepEqual(ArrayLite.reverse([1,2,3]), [3,2,1]);
 
 let sum = 0;

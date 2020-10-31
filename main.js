@@ -112,6 +112,17 @@ exports.filter = (array, predicate) => {
   return result;
 };
 
+exports.filterOut = (array, predicate) => {
+  const result = [];
+  const length = array.length;
+  for (let index = 0; index < length; index++) {
+    if (!predicate(array[index], index, array)) {
+      result[result.length] = array[index];
+    }
+  }
+  return result;
+};
+
 exports.forEach = (array, procedure) => {
   const length = array.length;
   for (let index = 0; index < length; index++) {
