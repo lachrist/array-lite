@@ -73,3 +73,5 @@ Assert.deepEqual(
     (f, x, i, xs) => (Assert.deepEqual(xs[i], x), x + f(2 * x)),
     (xs) => (Assert.deepEqual(xs, [2, 4, 6]), 0)),
   6);
+
+Assert.deepEqual(ArrayLite.repeat("foo", 3), ["foo", "foo", "foo"]);

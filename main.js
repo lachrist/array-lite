@@ -43,7 +43,7 @@ exports.some = (array, predicate) => {
   const length = array.length;
   for (let index = 0; index < length; index++) {
     if (predicate(array[index], index, array)) {
-      return true
+      return true;
     }
   }
   return false;
@@ -255,4 +255,12 @@ exports.delete = (array1, element) => {
     }
   }
   return array1;
+};
+
+exports.repeat = (element, length) => {
+  const array = [];
+  for (let index = 0; index < length; index++) {
+    array[index] = element;
+  }
+  return array;
 };
