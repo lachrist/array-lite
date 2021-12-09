@@ -264,3 +264,23 @@ exports.repeat = (element, length) => {
   }
   return array;
 };
+
+exports.zip = (array1, array2) => {
+  const length = array1.length > array2.length ? array2.length : array1.length
+  const array = [];
+  for (let index = 0; index < length; index ++) {
+    array[index] = [array1[index], array2[index]];
+  }
+  return array;
+};
+
+exports.unzip = (array) => {
+  const array1 = [];
+  const array2 = [];
+  const length = array.length;
+  for (let index = 0; index < length; index ++) {
+    array1[index] = array[index][0];
+    array2[index] = array[index][1];
+  }
+  return [array1, array2];
+};
